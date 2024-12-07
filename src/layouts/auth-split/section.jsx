@@ -16,9 +16,9 @@ export function Section({
   method,
   layoutQuery,
   methods,
-  title = 'Manage the job',
+  title = 'Baseball Digital Scorebook',
   imgUrl = `${CONFIG.assetsDir}/assets/illustrations/illustration-dashboard.webp`,
-  subtitle = 'More effectively with optimized workflows.',
+  subtitle = '',
   ...other
 }) {
   const theme = useTheme();
@@ -36,7 +36,7 @@ export function Section({
         px: 3,
         pb: 3,
         width: 1,
-        maxWidth: 480,
+        maxWidth: 580,
         display: 'none',
         position: 'relative',
         pt: 'var(--layout-header-desktop-height)',
