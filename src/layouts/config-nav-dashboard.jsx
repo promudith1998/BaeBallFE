@@ -45,10 +45,42 @@ export const navData = [
     subheader: 'Overview',
     items: [{ title: 'Dashboard', path: paths.dashboard.root, icon: ICONS.dashboard }],
   },
-
+  {
+    subheader: 'Baseball',
+    items: [
+      {
+        title: 'Baseball',
+        path: paths.dashboard.baseball.root,
+        icon: ICONS.user,
+        children: [
+          { title: 'Lineup', path: paths.dashboard.baseball.lineup },
+          { title: 'Dogout', path: paths.dashboard.baseball.dugout },
+          { title: 'Scorecard', path: paths.dashboard.baseball.scorecard },
+          { title: 'Results', path: paths.dashboard.baseball.results },
+          { title: 'Statistics', path: paths.dashboard.baseball.stats },
+        ],
+      },
+    ],
+  },
   /**
    * Item State
    */
+  {
+    subheader: 'Management',
+    items: [
+      {
+        title: 'User',
+        path: paths.dashboard.user.root,
+        icon: ICONS.user,
+        children: [
+          { title: 'Profile', path: paths.dashboard.user.root },
+          { title: 'Cards', path: paths.dashboard.user.cards },
+          { title: 'List', path: paths.dashboard.user.list },
+          { title: 'Create', path: paths.dashboard.user.new },
+        ],
+      },
+    ],
+  },
   {
     subheader: 'Misc',
     items: [

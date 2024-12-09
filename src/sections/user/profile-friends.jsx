@@ -10,9 +10,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { _socials } from 'src/_mock';
-import { TwitterIcon, FacebookIcon, LinkedinIcon, InstagramIcon } from 'src/assets/icons';
-
 import { Iconify } from 'src/components/iconify';
 import { SearchNotFound } from 'src/components/search-not-found';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
@@ -106,7 +103,7 @@ function FriendCard({ item }) {
           {item.role}
         </Typography>
 
-        <Stack alignItems="center" justifyContent="center" direction="row">
+        {/* <Stack alignItems="center" justifyContent="center" direction="row">
           {_socials.map((social) => (
             <IconButton key={social.label} color="inherit">
               {social.value === 'facebook' && <FacebookIcon />}
@@ -115,7 +112,7 @@ function FriendCard({ item }) {
               {social.value === 'twitter' && <TwitterIcon />}
             </IconButton>
           ))}
-        </Stack>
+        </Stack> */}
 
         <IconButton
           color={popover.open ? 'inherit' : 'default'}

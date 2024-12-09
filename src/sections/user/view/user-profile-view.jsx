@@ -12,18 +12,13 @@ import { paths } from 'src/routes/paths';
 import { useTabs } from 'src/hooks/use-tabs';
 
 import { DashboardContent } from 'src/layouts/dashboard';
-import { _userAbout, _userFeeds, _userFriends, _userGallery, _userFollowers } from 'src/_mock';
 
 import { Iconify } from 'src/components/iconify';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 import { useAuthContext } from 'src/auth/hooks';
 
-import { ProfileHome } from '../profile-home';
 import { ProfileCover } from '../profile-cover';
-import { ProfileFriends } from '../profile-friends';
-import { ProfileGallery } from '../profile-gallery';
-import { ProfileFollowers } from '../profile-followers';
 
 // ----------------------------------------------------------------------
 
@@ -68,12 +63,7 @@ export function UserProfileView() {
       />
 
       <Card sx={{ mb: 3, height: 290 }}>
-        <ProfileCover
-          role={_userAbout.role}
-          name={user?.displayName}
-          avatarUrl={user?.photoURL}
-          coverUrl={_userAbout.coverUrl}
-        />
+        <ProfileCover name={user?.displayName} avatarUrl={user?.photoURL} />
 
         <Box
           display="flex"
@@ -94,20 +84,6 @@ export function UserProfileView() {
           </Tabs>
         </Box>
       </Card>
-
-      {tabs.value === 'profile' && <ProfileHome info={_userAbout} posts={_userFeeds} />}
-
-      {tabs.value === 'followers' && <ProfileFollowers followers={_userFollowers} />}
-
-      {tabs.value === 'friends' && (
-        <ProfileFriends
-          friends={_userFriends}
-          searchFriends={searchFriends}
-          onSearchFriends={handleSearchFriends}
-        />
-      )}
-
-      {tabs.value === 'gallery' && <ProfileGallery gallery={_userGallery} />}
     </DashboardContent>
   );
 }

@@ -3,7 +3,8 @@
 export const overridesTheme = {
   /**
    *
- ```jsx
+ ```jsx```
+
   colorSchemes: {
     light: {
       palette: {
@@ -18,7 +19,5 @@ export const overridesTheme = {
       },
     },
   },
-  shape: { borderRadius: 0 },
- ```
- */
+  shape: { borderRadius: 0 }, */
 };

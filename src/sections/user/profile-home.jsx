@@ -13,9 +13,7 @@ import CardHeader from '@mui/material/CardHeader';
 
 import { fNumber } from 'src/utils/format-number';
 
-import { _socials } from 'src/_mock';
 import { varAlpha } from 'src/theme/styles';
-import { TwitterIcon, FacebookIcon, LinkedinIcon, InstagramIcon } from 'src/assets/icons';
 
 import { Iconify } from 'src/components/iconify';
 
@@ -133,7 +131,7 @@ export function ProfileHome({ info, posts }) {
     <Card>
       <CardHeader title="Social" />
 
-      <Stack spacing={2} sx={{ p: 3 }}>
+      {/* <Stack spacing={2} sx={{ p: 3 }}>
         {_socials.map((social) => (
           <Stack
             key={social.label}
@@ -154,7 +152,7 @@ export function ProfileHome({ info, posts }) {
             </Link>
           </Stack>
         ))}
-      </Stack>
+      </Stack> */}
     </Card>
   );
 

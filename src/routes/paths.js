@@ -70,5 +70,14 @@ export const paths = {
       account: `${ROOTS.DASHBOARD}/user/account`,
       edit: (id) => `${ROOTS.DASHBOARD}/user/${id}/edit`,
     },
+    baseball: {
+      root: `${ROOTS.DASHBOARD}/baseball`,
+      lineup: `${ROOTS.DASHBOARD}/baseball/lineup`,
+      dugout: `${ROOTS.DASHBOARD}/baseball/dugout`,
+      scorecard: `${ROOTS.DASHBOARD}/baseball/scorecard`,
+      results: `${ROOTS.DASHBOARD}/baseball/results`,
+      stats: `${ROOTS.DASHBOARD}/baseball/stats`,
+      // edit: (id) => `${ROOTS.DASHBOARD}/user/${id}/edit`,
+    },
   },
 };
