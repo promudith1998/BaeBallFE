@@ -30,7 +30,7 @@ export const NewUserSchema = zod.object({
 
 // ----------------------------------------------------------------------
 
-export function UserNewEditForm({ currentUser }) {
+export function CreatePlayers({ currentUser }) {
   const router = useRouter();
   // const [rows, setRows] = React.useState(initialRows);
   // const [rowModesModel, setRowModesModel] = React.useState({});
@@ -64,7 +64,7 @@ export function UserNewEditForm({ currentUser }) {
       reset();
       toast.success(currentUser ? 'Update success!' : 'Create success!');
       router.push(paths.dashboard.user.list);
-      console.info('DATA', data);
+      // console.info('DATA', data);
     } catch (error) {
       console.error(error);
     }
@@ -99,34 +99,6 @@ export function UserNewEditForm({ currentUser }) {
     { field: 'eight', headerName: '8', type: 'number', editable: true, width: 5 },
     { field: 'nine', headerName: '9', type: 'number', editable: true, width: 5 },
     { field: 'ten', headerName: '10', type: 'number', editable: true, width: 5 },
-    // {
-    //   field: 'actions',
-    //   type: 'actions',
-    //   headerName: 'Actions',
-    //   width: 100,
-    //   cellClassName: 'actions',
-    //   getActions: ({ id }) => {
-    //     const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-
-    //     if (isInEditMode) {
-    //       return [
-    //         <GridActionsCellItem
-    //           icon={<SaveIcon />}
-    //           label="Save"
-    //           sx={{
-    //             color: 'primary.main',
-    //           }}
-    //           onClick={handleSaveClick(id)}
-    //         />,
-    //         <GridActionsCellItem
-    //           icon={<CancelIcon />}
-    //           label="Cancel"
-    //           className="textPrimary"
-    //           onClick={handleCancelClick(id)}
-    //           color="inherit"
-    //         />,
-    //       ];
-    //     }
   ];
   const columnGroupingModel = [
     {
@@ -146,45 +118,6 @@ export function UserNewEditForm({ currentUser }) {
     },
   ];
 
-  // const handleRowEditStop = (params, event) => {
-  //   if (params.reason === GridRowEditStopReasons.rowFocusOut) {
-  //     event.defaultMuiPrevented = true;
-  //   }
-  // };
-
-  // const handleEditClick = (id) => () => {
-  //   setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
-  // };
-
-  // const handleSaveClick = (id) => () => {
-  //   setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
-  // };
-
-  // const handleDeleteClick = (id) => () => {
-  //   setRows(rows.filter((row) => row.id !== id));
-  // };
-
-  // const handleCancelClick = (id) => () => {
-  //   setRowModesModel({
-  //     ...rowModesModel,
-  //     [id]: { mode: GridRowModes.View, ignoreModifications: true },
-  //   });
-
-  //   const editedRow = rows.find((row) => row.id === id);
-  //   if (editedRow.isNew) {
-  //     setRows(rows.filter((row) => row.id !== id));
-  //   }
-  // };
-
-  // const processRowUpdate = (newRow) => {
-  //   const updatedRow = { ...newRow, isNew: false };
-  //   setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
-  //   return updatedRow;
-  // };
-
-  // const handleRowModesModelChange = (newRowModesModel) => {
-  //   setRowModesModel(newRowModesModel);
-  // };
   return (
     <Form methods={methods} onSubmit={onSubmit}>
       <Card sx={{ p: 3 }}>
@@ -206,7 +139,7 @@ export function UserNewEditForm({ currentUser }) {
       </Card>
       <br />
       <Card
-        title="Players In Team"
+        title="Create Players"
         sx={{
           p: 3,
           flexGrow: { md: 1 },
@@ -223,32 +156,14 @@ export function UserNewEditForm({ currentUser }) {
         />
       </Card>
       <br />
-      <Card
-        title="Substitution Players"
-        sx={{
-          p: 3,
-          flexGrow: { md: 1 },
-          display: { md: 'flex' },
-          flexDirection: { md: 'column' },
-        }}
-      >
-        {/* <DataGrid
-          rows={substitutionPlayers}
-          columns={columns}
-          columnGroupingModel={columnGroupingModel}
-          sx={{ border: 0, width: '100%', height: '100%' }}
-        /> */}
-
-        <Stack direction="row" spacing={2} alignItems="flex-start">
-          <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-            Save
-          </LoadingButton>
-          <LoadingButton type="button" variant="contained">
-            Cancel
-          </LoadingButton>
-        </Stack>
-        {/* <Stack direction="column" spacing={2} alignItems="flex-start" sx={{ mt: 3 }} /> */}
-      </Card>
+      <Stack direction="row" spacing={2} alignItems="flex-start">
+        <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
+          {!currentUser ? 'Cancel' : 'Save changes'}
+        </LoadingButton>
+        <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
+          {!currentUser ? 'Cancel' : 'Save changes'}
+        </LoadingButton>
+      </Stack>
     </Form>
   );
 }

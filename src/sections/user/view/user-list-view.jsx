@@ -3,6 +3,7 @@
 import { useCallback } from 'react';
 
 import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -17,7 +18,9 @@ import { RouterLink } from 'src/routes/components';
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useSetState } from 'src/hooks/use-set-state';
 
+import { varAlpha } from 'src/theme/styles';
 import { DashboardContent } from 'src/layouts/dashboard';
+// import { _roles, _userList, USER_STATUS_OPTIONS } from 'src/_mock';
 
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
@@ -40,6 +43,8 @@ import { UserTableFiltersResult } from '../user-table-filters-result';
 
 // ----------------------------------------------------------------------
 
+// const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...USER_STATUS_OPTIONS];
+
 const TABLE_HEAD = [
   { id: 'name', label: 'Name' },
   { id: 'phoneNumber', label: 'Phone number', width: 180 },
@@ -58,10 +63,12 @@ export function UserListView() {
 
   const confirm = useBoolean();
 
+  // const [tableData, setTableData] = useState(_userList);
+
   const filters = useSetState({ name: '', role: [], status: 'all' });
 
   const dataFiltered = applyFilter({
-    inputData: tableData,
+    // inputData: tableData,
     comparator: getComparator(table.order, table.orderBy),
     filters: filters.state,
   });
@@ -73,12 +80,38 @@ export function UserListView() {
 
   const notFound = (!dataFiltered.length && canReset) || !dataFiltered.length;
 
-  const handleEditRow = useCallback(
-    (id) => {
-      router.push(paths.dashboard.user.edit(id));
-    },
-    [router]
-  );
+  // const handleDeleteRow =
+  // useCallback();
+  // (id) => {
+  //   const deleteRow = tableData.filter((row) => row.id !== id);
+
+  //   toast.success('Delete success!');
+
+  //   setTableData(deleteRow);
+
+  //   table.onUpdatePageDeleteRow(dataInPage.length);
+  // },
+  // [dataInPage.length, table, tableData]
+
+  // const handleDeleteRows = useCallback(() => {
+  //   const deleteRows = tableData.filter((row) => !table.selected.includes(row.id));
+
+  //   toast.success('Delete success!');
+
+  //   setTableData(deleteRows);
+
+  //   table.onUpdatePageDeleteRows({
+  //     totalRowsInPage: dataInPage.length,
+  //     totalRowsFiltered: dataFiltered.length,
+  //   });
+  // }, [dataFiltered.length, dataInPage.length, table, tableData]);
+
+  // const handleEditRow = useCallback(
+  //   (id) => {
+  //     router.push(paths.dashboard.user.edit(id));
+  //   },
+  //   [router]
+  // );
 
   const handleFilterStatus = useCallback(
     (event, newValue) => {
@@ -112,6 +145,49 @@ export function UserListView() {
         />
 
         <Card>
+          <Tabs
+            value={filters.state.status}
+            onChange={handleFilterStatus}
+            sx={{
+              px: 2.5,
+              boxShadow: (theme) =>
+                `inset 0 -2px 0 0 ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
+            }}
+          >
+            {/* {STATUS_OPTIONS.map((tab) => (
+              <Tab
+                key={tab.value}
+                iconPosition="end"
+                value={tab.value}
+                label={tab.label}
+                icon={
+                  <Label
+                    variant={
+                      ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
+                      'soft'
+                    }
+                    color={
+                      (tab.value === 'active' && 'success') ||
+                      (tab.value === 'pending' && 'warning') ||
+                      (tab.value === 'banned' && 'error') ||
+                      'default'
+                    }
+                  >
+                    {['active', 'pending', 'banned', 'rejected'].includes(tab.value)
+                      ? tableData.filter((user) => user.status === tab.value).length
+                      : tableData.length}
+                  </Label>
+                }
+              />
+            ))} */}
+          </Tabs>
+
+          {/* <UserTableToolbar
+            filters={filters}
+            onResetPage={table.onResetPage}
+            options={{ roles: _roles }}
+          /> */}
+
           {canReset && (
             <UserTableFiltersResult
               filters={filters}
@@ -169,8 +245,9 @@ export function UserListView() {
                         key={row.id}
                         row={row}
                         selected={table.selected.includes(row.id)}
-                        onSelectRow={() => table.onSelectRow(row.id)}
-                        onEditRow={() => handleEditRow(row.id)}
+                        // onSelectRow={() => table.onSelectRow(row.id)}
+                        // onDeleteRow={() => handleDeleteRow(row.id)}
+                        // onEditRow={() => handleEditRow(row.id)}
                       />
                     ))}
 
@@ -210,10 +287,10 @@ export function UserListView() {
           <Button
             variant="contained"
             color="error"
-            onClick={() => {
-              handleDeleteRows();
-              confirm.onFalse();
-            }}
+            // onClick={() => {
+            //   handleDeleteRows();
+            //   confirm.onFalse();
+            // }}
           >
             Delete
           </Button>

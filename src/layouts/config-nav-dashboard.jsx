@@ -53,6 +53,8 @@ export const navData = [
         path: paths.dashboard.baseball.root,
         icon: ICONS.user,
         children: [
+          { title: 'Create Team', path: paths.dashboard.baseball.createTeam },
+          { title: 'Create Player', path: paths.dashboard.baseball.createplayers },
           { title: 'Lineup', path: paths.dashboard.baseball.lineup },
           { title: 'Dogout', path: paths.dashboard.baseball.dugout },
           { title: 'Scorecard', path: paths.dashboard.baseball.scorecard },
@@ -72,12 +74,7 @@ export const navData = [
         title: 'User',
         path: paths.dashboard.user.root,
         icon: ICONS.user,
-        children: [
-          { title: 'Profile', path: paths.dashboard.user.root },
-          { title: 'Cards', path: paths.dashboard.user.cards },
-          { title: 'List', path: paths.dashboard.user.list },
-          { title: 'Create', path: paths.dashboard.user.new },
-        ],
+        children: [{ title: 'Create', path: paths.dashboard.user.new }],
       },
     ],
   },

@@ -6,24 +6,24 @@ import { DashboardContent } from 'src/layouts/dashboard';
 
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
-import { UserNewEditForm } from '../scorecard';
+import { CreateTeam } from '../create_team';
 
 // ----------------------------------------------------------------------
 
-export function ScorecardView() {
+export function CreateTeamView() {
   return (
     <DashboardContent>
       <CustomBreadcrumbs
-        heading="Scorecard"
+        heading="Create Team"
         links={[
           { name: 'Dashboard', href: paths.dashboard.root },
           { name: 'Baseball', href: paths.dashboard.baseball.root },
-          { name: 'Scorecard' },
+          { name: 'Create Team' },
         ]}
         sx={{ mb: { xs: 3, md: 5 } }}
       />
 
-      <UserNewEditForm />
+      <CreateTeam />
     </DashboardContent>
   );
 }

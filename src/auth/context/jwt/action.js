@@ -8,13 +8,14 @@ import { STORAGE_KEY } from './constant';
 /** **************************************
  * Sign in
  *************************************** */
-export const signInWithPassword = async ({ email, password }) => {
+export const signInWithPassword = async ({ username, password }) => {
   try {
-    const params = { email, password };
+    const params = { username, password };
 
     const res = await axios.post(endpoints.auth.signIn, params);
 
     const { accessToken } = res.data;
+    console.log(res.data);
 
     if (!accessToken) {
       throw new Error('Access token not found in response');
