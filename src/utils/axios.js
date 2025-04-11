@@ -39,9 +39,9 @@ export const endpoints = {
     signIn: '/api/auth/sign-in',
     signUp: '/api/auth/sign-up',
   },
-  mail: {
-    list: '/api/mail/list',
-    details: '/api/mail/details',
+  user: {
+    create: '/api/user/create',
+    list: '/api/user/list',
     labels: '/api/mail/labels',
   },
   post: {
