@@ -72,7 +72,7 @@ export const paths = {
     },
     baseball: {
       root: `${ROOTS.DASHBOARD}/baseball`,
-      createplayers: `${ROOTS.DASHBOARD}/baseball/create_players`,
+      createPlayers: `${ROOTS.DASHBOARD}/baseball/create_players`,
       createTeam: `${ROOTS.DASHBOARD}/baseball/create_team`,
       lineup: `${ROOTS.DASHBOARD}/baseball/lineup`,
       dugout: `${ROOTS.DASHBOARD}/baseball/dugout`,

@@ -15,6 +15,8 @@ import { useRouter } from 'src/routes/hooks';
 import { toast } from 'src/components/snackbar';
 import { Form, Field } from 'src/components/hook-form';
 
+import axios, { endpoints } from '../../utils/axios';
+
 // ----------------------------------------------------------------------
 
 export const NewUserSchema = zod.object({
@@ -22,22 +24,24 @@ export const NewUserSchema = zod.object({
   gameName: zod.string().min(1, { message: 'Game is required!' }),
   gameDate: zod.string().min(1, { message: 'Date is required!' }),
   opponentTeam: zod.string().min(1, { message: 'Opponent is required!' }),
-
-  // Not required
-  status: zod.string(),
-  isVerified: zod.boolean(),
+  location: zod.string().optional(),
+  status: zod.string().optional(),
+  isVerified: zod.boolean().optional(),
 });
 
 // ----------------------------------------------------------------------
 
 export function CreateTeam({ currentUser }) {
   const router = useRouter();
-  // const [rows, setRows] = React.useState(initialRows);
-  // const [rowModesModel, setRowModesModel] = React.useState({});
 
   const defaultValues = useMemo(
     () => ({
-      isVerified: currentUser?.isVerified || true,
+      teamName: '',
+      gameName: '',
+      gameDate: '',
+      opponentTeam: '',
+      location: '',
+      isVerified: currentUser?.isVerified ?? true,
     }),
     [currentUser]
   );
@@ -56,10 +60,9 @@ export function CreateTeam({ currentUser }) {
     formState: { isSubmitting },
   } = methods;
 
-  const values = watch();
-
   const onSubmit = handleSubmit(async (data) => {
     try {
+      const response = await axios.post(endpoints.user.create, data);
       await new Promise((resolve) => setTimeout(resolve, 500));
       reset();
       toast.success(currentUser ? 'Update success!' : 'Create success!');
@@ -67,54 +70,31 @@ export function CreateTeam({ currentUser }) {
       console.info('DATA', data);
     } catch (error) {
       console.error(error);
+      toast.error('An error occurred while submitting the form.');
     }
   });
-  const teamPlayers = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-    { id: 10 },
-    { id: 11 },
-    { id: 12 },
-    { id: 13 },
-  ];
+
+  const teamPlayers = Array.from({ length: 13 }, (_, i) => ({ id: i + 1 }));
 
   const columns = [
-    { field: 'id', headerName: 'Batting Order', width: '100' },
-    { field: 'playerNo', headerName: 'Player No', type: 'number', editable: true, width: '100' },
-    { field: 'playerName', headerName: 'PlayerName', editable: true, flex: 5 },
-    { field: 'one', headerName: '1', type: 'number', editable: true, width: 5 },
-    { field: 'two', headerName: '2', type: 'number', editable: true, width: 5 },
-    { field: 'three', headerName: '3', type: 'number', editable: true, width: 5 },
-    { field: 'four', headerName: '4', type: 'number', editable: true, width: 5 },
-    { field: 'five', headerName: '5', type: 'number', editable: true, width: 5 },
-    { field: 'six', headerName: '6', type: 'number', editable: true, width: 5 },
-    { field: 'seven', headerName: '7', type: 'number', editable: true, width: 5 },
-    { field: 'eight', headerName: '8', type: 'number', editable: true, width: 5 },
-    { field: 'nine', headerName: '9', type: 'number', editable: true, width: 5 },
-    { field: 'ten', headerName: '10', type: 'number', editable: true, width: 5 },
+    { field: 'id', headerName: 'Batting Order', width: 120 },
+    { field: 'playerNo', headerName: 'Player No', type: 'number', editable: true, width: 120 },
+    { field: 'playerName', headerName: 'Player Name', editable: true, flex: 1 },
+    ...Array.from({ length: 10 }, (_, i) => ({
+      field: `${i + 1}`,
+      headerName: `${i + 1}`,
+      type: 'number',
+      editable: true,
+      width: 60,
+    })),
   ];
+
   const columnGroupingModel = [
     {
       groupId: 'Position by inning',
-      children: [
-        { field: 'one' },
-        { field: 'two' },
-        { field: 'three' },
-        { field: 'four' },
-        { field: 'five' },
-        { field: 'six' },
-        { field: 'seven' },
-        { field: 'eight' },
-        { field: 'nine' },
-        { field: 'ten' },
-      ],
+      children: Array.from({ length: 10 }, (_, i) => ({
+        field: `${i + 1}`,
+      })),
     },
   ];
 
@@ -125,64 +105,38 @@ export function CreateTeam({ currentUser }) {
           rowGap={3}
           columnGap={2}
           display="grid"
-          gridTemplateColumns={{
-            xs: 'repeat(1, 1fr)',
-            sm: 'repeat(2, 1fr)',
-          }}
+          gridTemplateColumns={{ xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' }}
         >
-          <Field.Text name="teamName" label="Team name" />
+          <Field.Text name="teamName" label="Team Name" />
           <Field.Text name="gameName" label="Game" />
           <Field.DatePicker name="gameDate" label="Date" />
           <Field.Text name="location" label="Location" />
           <Field.Text name="opponentTeam" label="Opponent" />
         </Box>
       </Card>
-      <br />
-      <Card
-        title="Create Team"
-        sx={{
-          p: 3,
-          flexGrow: { md: 1 },
-          display: { md: 'flex' },
-          flexDirection: { md: 'column' },
-        }}
-      >
-        <DataGrid
-          rows={teamPlayers}
-          columns={columns}
-          // showColumnBorders={true}
-          columnGroupingModel={columnGroupingModel}
-          sx={{ border: 0, width: '100%', height: '100%' }}
-        />
-      </Card>
-      <br />
-      <Card
-        title="Substitution Players"
-        sx={{
-          p: 3,
-          flexGrow: { md: 1 },
-          display: { md: 'flex' },
-          flexDirection: { md: 'column' },
-        }}
-      >
-        {/* <DataGrid
-          rows={substitutionPlayers}
-          columns={columns}
-          columnGroupingModel={columnGroupingModel}
-          sx={{ border: 0, width: '100%', height: '100%' }}
-        /> */}
 
-        <Stack direction="column" spacing={2} alignItems="flex-start">
-          <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-            {!currentUser ? 'Cancel' : 'Save changes'}
-          </LoadingButton>
-        </Stack>
-        <Stack direction="column" spacing={2} alignItems="flex-start" sx={{ mt: 3 }}>
-          <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-            {!currentUser ? 'Cancel' : 'Save changes'}
-          </LoadingButton>
-        </Stack>
-      </Card>
+      <Box mt={3}>
+        <Card sx={{ p: 3 }}>
+          <DataGrid
+            rows={teamPlayers}
+            columns={columns}
+            columnGroupingModel={columnGroupingModel}
+            autoHeight
+            disableRowSelectionOnClick
+          />
+        </Card>
+      </Box>
+
+      <Box mt={3}>
+        <Card sx={{ p: 3 }}>
+          {/* Placeholder for Substitution Players */}
+          <Stack direction="row" spacing={2} justifyContent="flex-start">
+            <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
+              {currentUser ? 'Save Changes' : 'Create Team'}
+            </LoadingButton>
+          </Stack>
+        </Card>
+      </Box>
     </Form>
   );
 }

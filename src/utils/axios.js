@@ -40,7 +40,7 @@ export const endpoints = {
     signUp: '/api/auth/sign-up',
   },
   user: {
-    create: '/api/user/create',
+    create: '/api/auth/save-user',
     list: '/api/user/list',
     labels: '/api/mail/labels',
   },

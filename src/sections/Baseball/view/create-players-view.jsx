@@ -6,7 +6,7 @@ import { DashboardContent } from 'src/layouts/dashboard';
 
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
-import { CreatePlayers } from '../create_Players';
+import { CreatePlayers } from '../create_players';
 
 // ----------------------------------------------------------------------
 
