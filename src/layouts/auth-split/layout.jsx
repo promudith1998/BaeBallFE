@@ -80,13 +80,13 @@ export function AuthSplitLayout({ sx, section, children, header }) {
           imgUrl={section?.imgUrl}
           method={CONFIG.auth.method}
           subtitle={section?.subtitle}
-          methods={[
-            {
-              label: 'Jwt',
-              path: paths.auth.jwt.signIn,
-              icon: `${CONFIG.assetsDir}/assets/icons/platforms/ic-jwt.svg`,
-            },
-          ]}
+          // methods={[
+          //   {
+          //     label: 'Jwt',
+          //     path: paths.auth.jwt.signIn,
+          //     icon: `${CONFIG.assetsDir}/assets/icons/platforms/ic-jwt.svg`,
+          //   },
+          // ]}
         />
         <Content layoutQuery={layoutQuery}>{children}</Content>
       </Main>

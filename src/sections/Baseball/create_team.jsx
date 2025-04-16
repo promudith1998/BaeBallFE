@@ -74,8 +74,7 @@ export function CreateTeam({ currentUser }) {
     }
   });
 
-  const teamPlayers = Array.from({ length: 13 }, (_, i) => ({ id: i + 1 }));
-
+  const teamPlayers = [];
   const columns = [
     { field: 'id', headerName: 'Batting Order', width: 120 },
     { field: 'playerNo', headerName: 'Player No', type: 'number', editable: true, width: 120 },
@@ -133,6 +132,18 @@ export function CreateTeam({ currentUser }) {
           <Stack direction="row" spacing={2} justifyContent="flex-start">
             <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
               {currentUser ? 'Save Changes' : 'Create Team'}
+            </LoadingButton>
+            <LoadingButton
+              variant="outlined"
+              onClick={() => router.push(paths.dashboard.baseball.root)}
+            >
+              Cancel
+            </LoadingButton>
+            <LoadingButton
+              variant="contained"
+              onClick={() => router.push(paths.dashboard.baseball.root)}
+            >
+              View List
             </LoadingButton>
           </Stack>
         </Card>

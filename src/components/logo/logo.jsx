@@ -34,7 +34,7 @@ export const Logo = forwardRef(
         alt="Single logo"
         component="img"
         // src={`${CONFIG.assetsDir}/logo/logo-single.svg`}
-        src={`${CONFIG.assetsDir}/logo/Statlog.svg`}
+        src={`${CONFIG.assetsDir}/logo/IASSL.svg`}
         width="100%"
         height="100%"
       />
@@ -45,7 +45,7 @@ export const Logo = forwardRef(
         alt="Full logo"
         component="img"
         // src={`${CONFIG.assetsDir}/logo/logo-full.svg`}
-        src={`${CONFIG.assetsDir}/logo/Statlog.svg`}
+        src={`${CONFIG.assetsDir}/logo/IASSL.svg`}
         width="100%"
         height="100%"
       />

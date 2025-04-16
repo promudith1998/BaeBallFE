@@ -41,7 +41,7 @@ export const endpoints = {
   },
   user: {
     create: '/api/auth/save-user',
-    list: '/api/user/list',
+    list: '/api/auth/all-users',
     labels: '/api/mail/labels',
   },
   post: {

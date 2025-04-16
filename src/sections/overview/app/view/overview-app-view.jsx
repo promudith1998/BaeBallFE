@@ -1,22 +1,10 @@
 'use client';
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
-import Grid from '@mui/material/Unstable_Grid2';
 
 import { DashboardContent } from 'src/layouts/dashboard';
-import { SeoIllustration } from 'src/assets/illustrations';
-
-import { svgColorClasses } from 'src/components/svg-color';
 
 import { useAuthContext } from 'src/auth/hooks';
-
-import { AppWidget } from '../app-widget';
-import { AppWelcome } from '../app-welcome';
-import { AppAreaInstalled } from '../app-area-installed';
-import { AppWidgetSummary } from '../app-widget-summary';
-import { AppCurrentDownload } from '../app-current-download';
 
 // ----------------------------------------------------------------------
 
@@ -27,7 +15,7 @@ export function OverviewAppView() {
 
   return (
     <DashboardContent maxWidth="xl">
-      <Grid container spacing={3}>
+      {/* <Grid container spacing={3}>
         <Grid xs={12} md={8}>
           <AppWelcome
             title={`Welcome back 👋 \n ${user?.displayName}`}
@@ -164,7 +152,7 @@ export function OverviewAppView() {
             />
           </Box>
         </Grid>
-      </Grid>
+      </Grid> */}
     </DashboardContent>
   );
 }

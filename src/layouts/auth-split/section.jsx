@@ -17,7 +17,7 @@ export function Section({
   layoutQuery,
   methods,
   title = 'Baseball Digital Scorebook',
-  imgUrl = `${CONFIG.assetsDir}/assets/illustrations/illustration-dashboard.webp`,
+  imgUrl = `${CONFIG.assetsDir}/assets/illustrations/basaeball.png`,
   subtitle = '',
   ...other
 }) {
@@ -67,7 +67,7 @@ export function Section({
         component="img"
         alt="Dashboard illustration"
         src={imgUrl}
-        sx={{ width: 1, aspectRatio: '4/3', objectFit: 'cover' }}
+        sx={{ width: 1, aspectRatio: '1', objectFit: 'cover' }}
       />
 
       {!!methods?.length && method && (

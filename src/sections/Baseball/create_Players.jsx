@@ -160,9 +160,9 @@ export function CreatePlayers({ currentUser }) {
         <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
           {!currentUser ? 'Cancel' : 'Save changes'}
         </LoadingButton>
-        <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
+        {/* <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
           {!currentUser ? 'Cancel' : 'Save changes'}
-        </LoadingButton>
+        </LoadingButton> */}
       </Stack>
     </Form>
   );

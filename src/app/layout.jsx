@@ -33,7 +33,7 @@ export const metadata = {
   icons: [
     {
       rel: 'icon',
-      url: `${CONFIG.assetsDir}/favicon.ico`,
+      url: `${CONFIG.assetsDir}/IASSL.ico`,
     },
   ],
 };

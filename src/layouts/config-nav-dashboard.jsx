@@ -78,28 +78,28 @@ export const navData = [
       },
     ],
   },
-  {
-    subheader: 'Misc',
-    items: [
-      {
-        // default roles : All roles can see this entry.
-        // roles: ['user'] Only users can see this item.
-        // roles: ['admin'] Only admin can see this item.
-        // roles: ['admin', 'manager'] Only admin/manager can see this item.
-        // Reference from 'src/guards/RoleBasedGuard'.
-        title: 'Permission',
-        path: paths.dashboard.permission,
-        icon: ICONS.lock,
-        roles: ['admin', 'manager'],
-        caption: 'Only admin can see this item',
-      },
+  // {
+  //   subheader: 'Misc',
+  //   items: [
+  //     {
+  //       // default roles : All roles can see this entry.
+  //       // roles: ['user'] Only users can see this item.
+  //       // roles: ['admin'] Only admin can see this item.
+  //       // roles: ['admin', 'manager'] Only admin/manager can see this item.
+  //       // Reference from 'src/guards/RoleBasedGuard'.
+  //       title: 'Permission',
+  //       path: paths.dashboard.permission,
+  //       icon: ICONS.lock,
+  //       roles: ['admin', 'manager'],
+  //       caption: 'Only admin can see this item',
+  //     },
 
-      {
-        title: 'Disabled',
-        path: '#disabled',
-        icon: ICONS.disabled,
-        disabled: true,
-      },
-    ],
-  },
+  //     {
+  //       title: 'Disabled',
+  //       path: '#disabled',
+  //       icon: ICONS.disabled,
+  //       disabled: true,
+  //     },
+  //   ],
+  // },
 ];
