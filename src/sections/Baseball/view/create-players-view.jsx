@@ -6,7 +6,7 @@ import { DashboardContent } from 'src/layouts/dashboard';
 
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
-import { CreatePlayers } from '../create_players';
+import { CreateTeamPlayers } from '../create_team_players';
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ export function CreatePlayersView() {
         sx={{ mb: { xs: 3, md: 5 } }}
       />
 
-      <CreatePlayers />
+      <CreateTeamPlayers />
     </DashboardContent>
   );
 }

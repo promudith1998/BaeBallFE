@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
-import { DataGrid } from '@mui/x-data-grid';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import { paths } from 'src/routes/paths';
@@ -30,7 +29,7 @@ export const NewUserSchema = zod.object({
 
 // ----------------------------------------------------------------------
 
-export function CreatePlayers({ currentUser }) {
+export function CreateTeamPlayers({ currentUser }) {
   const router = useRouter();
   // const [rows, setRows] = React.useState(initialRows);
   // const [rowModesModel, setRowModesModel] = React.useState({});
@@ -64,59 +63,10 @@ export function CreatePlayers({ currentUser }) {
       reset();
       toast.success(currentUser ? 'Update success!' : 'Create success!');
       router.push(paths.dashboard.user.list);
-      // console.info('DATA', data);
     } catch (error) {
       console.error(error);
     }
   });
-  const teamPlayers = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-    { id: 10 },
-    { id: 11 },
-    { id: 12 },
-    { id: 13 },
-  ];
-
-  const columns = [
-    { field: 'id', headerName: 'Batting Order', width: '100' },
-    { field: 'playerNo', headerName: 'Player No', type: 'number', editable: true, width: '100' },
-    { field: 'playerName', headerName: 'PlayerName', editable: true, flex: 5 },
-    { field: 'one', headerName: '1', type: 'number', editable: true, width: 5 },
-    { field: 'two', headerName: '2', type: 'number', editable: true, width: 5 },
-    { field: 'three', headerName: '3', type: 'number', editable: true, width: 5 },
-    { field: 'four', headerName: '4', type: 'number', editable: true, width: 5 },
-    { field: 'five', headerName: '5', type: 'number', editable: true, width: 5 },
-    { field: 'six', headerName: '6', type: 'number', editable: true, width: 5 },
-    { field: 'seven', headerName: '7', type: 'number', editable: true, width: 5 },
-    { field: 'eight', headerName: '8', type: 'number', editable: true, width: 5 },
-    { field: 'nine', headerName: '9', type: 'number', editable: true, width: 5 },
-    { field: 'ten', headerName: '10', type: 'number', editable: true, width: 5 },
-  ];
-  const columnGroupingModel = [
-    {
-      groupId: 'Position by inning',
-      children: [
-        { field: 'one' },
-        { field: 'two' },
-        { field: 'three' },
-        { field: 'four' },
-        { field: 'five' },
-        { field: 'six' },
-        { field: 'seven' },
-        { field: 'eight' },
-        { field: 'nine' },
-        { field: 'ten' },
-      ],
-    },
-  ];
 
   return (
     <Form methods={methods} onSubmit={onSubmit}>
@@ -137,25 +87,6 @@ export function CreatePlayers({ currentUser }) {
           <Field.Text name="opponentTeam" label="Opponent" />
         </Box>
       </Card>
-      <br />
-      <Card
-        title="Create Players"
-        sx={{
-          p: 3,
-          flexGrow: { md: 1 },
-          display: { md: 'flex' },
-          flexDirection: { md: 'column' },
-        }}
-      >
-        <DataGrid
-          rows={teamPlayers}
-          columns={columns}
-          // showColumnBorders={true}
-          columnGroupingModel={columnGroupingModel}
-          sx={{ border: 0, width: '100%', height: '100%' }}
-        />
-      </Card>
-      <br />
       <Stack direction="row" spacing={2} alignItems="flex-start">
         <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
           {!currentUser ? 'Cancel' : 'Save changes'}

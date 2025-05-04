@@ -121,8 +121,8 @@ export function UserNewEditForm({ currentUser }) {
               <Box
                 sx={{
                   position: 'absolute',
-                  top: '52%',
-                  left: '69%',
+                  top: '65%',
+                  left: '63%',
                   transform: 'translate(-50%, -50%)',
                   width: 20,
                   height: 20,
@@ -135,7 +135,7 @@ export function UserNewEditForm({ currentUser }) {
               <Box
                 sx={{
                   position: 'absolute',
-                  top: '34%',
+                  top: '45%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
                   width: 20,
@@ -149,8 +149,8 @@ export function UserNewEditForm({ currentUser }) {
               <Box
                 sx={{
                   position: 'absolute',
-                  top: '52%',
-                  left: '31%',
+                  top: '65%',
+                  left: '38%',
                   transform: 'translate(-50%, -50%)',
                   width: 20,
                   height: 20,
