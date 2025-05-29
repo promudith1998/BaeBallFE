@@ -1,3 +1,4 @@
+import { Dashboard } from '@mui/icons-material';
 import axios from 'axios';
 
 import { CONFIG } from 'src/config-global';
@@ -55,4 +56,7 @@ export const endpoints = {
     details: '/api/product/details',
     search: '/api/product/search',
   },
+  Dashboard:{   
+    battingAverageComparison: '/api/dashboard/batting-average-comparison',
+  }
 };
