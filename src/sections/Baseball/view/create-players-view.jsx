@@ -13,7 +13,8 @@ import { CreateTeamPlayers } from '../create_team_players';
 export function CreatePlayersView() {
   return (
     <DashboardContent>
-      <CustomBreadcrumbs
+      <div>FUCK</div>
+      {/* <CustomBreadcrumbs
         heading="Create Players"
         links={[
           { name: 'Dashboard', href: paths.dashboard.root },
@@ -23,7 +24,7 @@ export function CreatePlayersView() {
         sx={{ mb: { xs: 3, md: 5 } }}
       />
 
-      <CreateTeamPlayers />
+      <CreateTeamPlayers /> */}
     </DashboardContent>
   );
 }
